@@ -29,3 +29,4 @@ front_end/stats.html
 front_end/version.txt
 tmp_files/
 model.tar.gz
+close.sh

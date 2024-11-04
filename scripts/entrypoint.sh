@@ -57,9 +57,9 @@ fi
 cd /workspace/QAnything || exit
 
 echo "embedding和rerank服务将在远程服务器上运行"
-nohup python3 -u qanything_kernel/dependent_server/rerank_server/rerank_server.py > /workspace/QAnything/logs/debug_logs/rerank_server.log 2>&1 &
-PID1=$!
-nohup python3 -u qanything_kernel/dependent_server/embedding_server/embedding_server.py > /workspace/QAnything/logs/debug_logs/embedding_server.log 2>&1 &
+# nohup python3 -u qanything_kernel/dependent_server/rerank_server/rerank_server.py > /workspace/QAnything/logs/debug_logs/rerank_server.log 2>&1 &
+# PID1=$!
+nohup python3 -u qanything_kernel/dependent_server/embedding_server/embedding_server.py --workers 2 > /workspace/QAnything/logs/debug_logs/embedding_server.log 2>&1 &
 PID2=$!
 nohup python3 -u qanything_kernel/dependent_server/pdf_parser_server/pdf_parser_server.py > /workspace/QAnything/logs/debug_logs/pdf_parser_server.log 2>&1 &
 PID3=$!
@@ -71,7 +71,7 @@ nohup python3 -u qanything_kernel/qanything_server/sanic_api.py --host $USER_IP 
 PID6=$!
 # 生成close.sh脚本，写入kill命令
 echo "#!/bin/bash" > close.sh
-echo "kill $PID1 $PID2 $PID3 $PID4 $PID5 $PID6" >> close.sh
+echo "kill $PID2 $PID3 $PID4 $PID5 $PID6" >> close.sh
 
 # 给close.sh执行权限
 chmod +x close.sh
