@@ -28,3 +28,4 @@ front_end/stats.html
 front_end/version.txt
 tmp_files/
 close.sh
+rerank_model_torch

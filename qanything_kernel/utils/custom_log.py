@@ -34,16 +34,12 @@ rerank_log_folder = './logs/rerank_logs'
 embed_log_folder = './logs/embed_logs'
 insert_log_folder = './logs/insert_logs'
 # 确保日志文件夹存在
-if not os.path.exists(debug_log_folder):
-    os.makedirs(debug_log_folder)
-if not os.path.exists(qa_log_folder):
-    os.makedirs(qa_log_folder)
-if not os.path.exists(rerank_log_folder):
-    os.makedirs(rerank_log_folder)
-if not os.path.exists(embed_log_folder):
-    os.makedirs(embed_log_folder)
-if not os.path.exists(insert_log_folder):
-    os.makedirs(insert_log_folder)
+
+os.makedirs(debug_log_folder,exist_ok=True)
+os.makedirs(qa_log_folder,exist_ok=True)
+os.makedirs(rerank_log_folder,exist_ok=True)
+os.makedirs(embed_log_folder,exist_ok=True)
+os.makedirs(insert_log_folder,exist_ok=True)
 # 定义日志文件的完整路径，包括文件夹和文件名
 # log_file = os.path.join(log_folder, f'log_{current_time}.log')
 

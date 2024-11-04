@@ -1,0 +1,16 @@
+torch==2.0.0
+numpy==1.21
+python-dotenv
+transformers
+sanic
+concurrent-log-handler
+pandas==1.4
+aiohttp
+bs4
+tiktoken
+html2text
+docx2txt   
+fitz
+chardet
+pptx
+frontend

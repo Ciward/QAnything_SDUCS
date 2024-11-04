@@ -1,2 +1,3 @@
 #!/bin/bash
-kill 8 9 10 11 12 13
+kill 39591
+rm -rf logs

@@ -1,12 +1,29 @@
+import time
 from transformers import AutoTokenizer
 from copy import deepcopy
 from typing import List
 from qanything_kernel.configs.model_config import LOCAL_RERANK_MAX_LENGTH, \
     LOCAL_RERANK_BATCH, LOCAL_RERANK_PATH, LOCAL_RERANK_THREADS
 from qanything_kernel.utils.custom_log import debug_logger
-from qanything_kernel.utils.general_utils import get_time
+#from qanything_kernel.utils.general_utils import get_time
 import concurrent.futures
 from abc import ABC, abstractmethod
+from qanything_kernel.utils.custom_log import debug_logger, embed_logger, rerank_logger
+# 同步执行环境下的耗时统计装饰器
+def get_time(func):
+    def get_time_inner(*arg, **kwargs):
+        s_time = time.time()
+        res = func(*arg, **kwargs)
+        e_time = time.time()
+        if 'embed' in func.__name__:
+            embed_logger.info('函数 {} 执行耗时: {:.2f} 秒'.format(func.__name__, e_time - s_time))
+        elif 'rerank' in func.__name__:
+            rerank_logger.info('函数 {} 执行耗时: {:.2f} 秒'.format(func.__name__, e_time - s_time))
+        else:
+            debug_logger.info('函数 {} 执行耗时: {:.2f} 毫秒'.format(func.__name__, (e_time - s_time) * 1000))
+        return res
+
+    return get_time_inner
 
 
 class RerankBackend(ABC):

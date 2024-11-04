@@ -12,7 +12,7 @@ class RerankTorchBackend(RerankBackend):
         self.return_tensors = "pt"
         self._model = AutoModelForSequenceClassification.from_pretrained(LOCAL_RERANK_PATH,
                                                                          return_dict=False)
-        self.device = torch.device('cpu')
+        self.device = torch.device('cuda' if torch.cuda.is_available() and not use_cpu else 'cpu')
         self._model = self._model.to(self.device)
         print("rerank device:", self.device)
 
