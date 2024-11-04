@@ -18,6 +18,7 @@ front_end/dist
 node_modules
 models
 volumes
+volumes_backup
 *.log
 front_end/yarn.lock
 front_end/package-lock.json
@@ -27,3 +28,4 @@ front_end/components.d.ts
 front_end/stats.html
 front_end/version.txt
 tmp_files/
+model.tar.gz

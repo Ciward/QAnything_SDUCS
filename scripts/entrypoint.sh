@@ -56,7 +56,7 @@ fi
 
 cd /workspace/QAnything || exit
 
-echo "embedding和rerank服务将在CPU上运行"
+echo "embedding和rerank服务将在远程服务器上运行"
 nohup python3 -u qanything_kernel/dependent_server/rerank_server/rerank_server.py > /workspace/QAnything/logs/debug_logs/rerank_server.log 2>&1 &
 PID1=$!
 nohup python3 -u qanything_kernel/dependent_server/embedding_server/embedding_server.py > /workspace/QAnything/logs/debug_logs/embedding_server.log 2>&1 &
