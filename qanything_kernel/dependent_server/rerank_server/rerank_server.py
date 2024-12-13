@@ -69,7 +69,7 @@ def get_time_async(func):
 
 
 @get_time_async
-@app.route("/rerank_torch", methods=["POST"])
+@app.route("/rerank", methods=["POST"])
 async def rerank_torch(request):
     data = request.json
     query = data.get('query')
@@ -81,7 +81,7 @@ async def rerank_torch(request):
 
 
 @app.listener('before_server_start')
-async def setup_onnx_backend(app, loop):
+async def setup_torch_backend(app, loop):
     # app.ctx.onnx_backend = RerankAsyncBackend(model_path=LOCAL_RERANK_MODEL_PATH, use_cpu=not args.use_gpu,
     #                                           num_threads=LOCAL_RERANK_THREADS)
     # app.ctx.onnx_backend = RerankOnnxBackend(use_cpu=not args.use_gpu)

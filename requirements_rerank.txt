@@ -12,5 +12,5 @@ html2text
 docx2txt   
 fitz
 chardet
-pptx
+python-pptx
 frontend
