@@ -10,7 +10,7 @@ else
   echo "Directory $DIR already exists."
 fi
 
-nohup python -u qanything_kernel/dependent_server/rerank_server/rerank_server.py --use_gpu > logs/debug_logs/rerank_server.log 2>&1 &
+nohup python -u qanything_kernel/dependent_server/rerank_server/rerank_server.py --use_gpu --workers 3 > logs/debug_logs/rerank_server.log 2>&1 &
 PID1=$!
 # nohup python -u qanything_kernel/dependent_server/embedding_server/embedding_server.py --use_gpu --workers 1 > logs/debug_logs/embedding_server.log 2>&1 &
 # PID2=$!

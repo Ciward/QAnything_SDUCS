@@ -20,7 +20,9 @@ from qanything_kernel.dependent_server.rerank_server.rerank_torch_backend import
 # from qanything_kernel.utils.general_utils import get_time_async
 import argparse
 from qanything_kernel.utils.custom_log import debug_logger, embed_logger, rerank_logger
+from sanic.worker.manager import WorkerManager
 
+WorkerManager.THRESHOLD = 6000
 # 接收外部参数mode
 parser = argparse.ArgumentParser()
 # mode必须是local或online
